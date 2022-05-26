@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { Login } from '../Login';
 import { Profile } from '../Profile/Profile';
 import { Auth } from '../types';
-import logo from './logo.svg';
+import logo from './MetaMask_Fox.svg';
 
 const LS_KEY = 'login-with-metamask:auth';
 
@@ -39,9 +39,7 @@ export const App = (): JSX.Element => {
 		<div className="App">
 			<header className="App-header">
 				<img src={logo} className="App-logo" alt="logo" />
-				<h1 className="App-title">
-					Welcome to Login with MetaMask Demo
-				</h1>
+				<h1 className="App-title"> DID Authentication with MetaMask</h1>
 			</header>
 			<div className="App-intro">
 				{auth ? (

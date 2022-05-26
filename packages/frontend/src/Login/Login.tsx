@@ -114,19 +114,11 @@ export const Login = ({ onLoggedIn }: Props): JSX.Element => {
 	return (
 		<div>
 			<p>
-				Please select your login method.
+				Click the button to log in.
 				<br />
-				For the purpose of this demo, only MetaMask login is
-				implemented.
 			</p>
 			<button className="Login-button Login-mm" onClick={handleClick}>
-				{loading ? 'Loading...' : 'Login with MetaMask'}
-			</button>
-			<button className="Login-button Login-fb" disabled>
-				Login with Facebook
-			</button>
-			<button className="Login-button Login-email" disabled>
-				Login with Email
+				{loading ? 'Loading...' : 'Connect wallet'}
 			</button>
 		</div>
 	);

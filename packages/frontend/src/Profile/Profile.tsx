@@ -2,7 +2,15 @@ import './Profile.css';
 
 import jwtDecode from 'jwt-decode';
 import React, { useState, useEffect } from 'react';
-import Blockies from 'react-blockies';
+//import Messenger from "./messenger.js";
+/* tslint:disable no-var-requires */
+/*
+import * as express from "express"
+const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
+const port = process.env.PORT || 3000;
+*/
 
 import { Auth } from '../types';
 
@@ -96,24 +104,32 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
 	const username = user && user.username;
 
 	return (
-		<div className="Profile">
-			<p>
-				Logged in as <Blockies seed={publicAddress} />
-			</p>
-			<div>
-				My username is {username ? <pre>{username}</pre> : 'not set.'}{' '}
-				My publicAddress is <pre>{publicAddress}</pre>
+		<body>
+			<div className="Profile">
+				<div>
+					My username is{' '}
+					{username ? <pre>{username}</pre> : 'not set.'}
+					<br></br>
+					My public address is <pre>{publicAddress}</pre>
+				</div>
+				<div>
+					<label htmlFor="username">Change username: </label>
+					<input name="username" onChange={handleChange} />
+					<button disabled={loading} onClick={handleSubmit}>
+						Submit
+					</button>
+				</div>
+				<p>
+					<button onClick={onLoggedOut}>Log out</button>
+				</p>
 			</div>
-			<div>
-				<label htmlFor="username">Change username: </label>
-				<input name="username" onChange={handleChange} />
-				<button disabled={loading} onClick={handleSubmit}>
-					Submit
-				</button>
-			</div>
-			<p>
-				<button onClick={onLoggedOut}>Logout</button>
-			</p>
-		</div>
+			<ul id="messages"></ul>
+			<form id="form" action="">
+				<input id="input" autoComplete="off" />
+				<button>Send</button>
+			</form>
+			<script src="/socket.io/socket.io.js"></script>
+			<script src="packages\frontend\src\Profile\chat.js"></script>
+		</body>
 	);
 };
