@@ -5,6 +5,7 @@ import jwt from 'jsonwebtoken';
 
 import { config } from '../../config';
 import { User } from '../../models/user.model';
+import crypto from "crypto";
 
 export const create = (req: Request, res: Response, next: NextFunction) => {
 	const { signature, publicAddress } = req.body;
@@ -73,8 +74,8 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 						'User is not defined in "Generate a new nonce for the user".'
 					);
 				}
+				user.nonce = crypto.randomInt(0, 10000);
 
-				user.nonce = Math.floor(Math.random() * 10000);
 				return user.save();
 			})
 			////////////////////////////////////////////////////

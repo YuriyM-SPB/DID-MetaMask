@@ -67,6 +67,11 @@
     "minimatch" "^3.0.4"
     "strip-json-comments" "^3.1.1"
 
+"@nastyox/rando.js@^2.0.5":
+  "integrity" "sha512-a7s3h4vnpCVEYT+W+mBc4ykmwtO29DnFQQR/X6YSbJ+YenAvpYBRCeUgEoPEWGlUS1Hbw1IWIsiIFVXw0g2QLw=="
+  "resolved" "https://registry.npmjs.org/@nastyox/rando.js/-/rando.js-2.0.5.tgz"
+  "version" "2.0.5"
+
 "@nodelib/fs.scandir@2.1.4":
   "integrity" "sha512-33g3pMJk3bg5nXbL/+CY6I2eJDzZAni49PfJnL5fghPTggPvBd/pFNSgJsdAgWptuFu7qq/ERvOYFlhvsLTCKA=="
   "resolved" "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.4.tgz"
@@ -381,6 +386,11 @@
   "resolved" "https://registry.npmjs.org/base64id/-/base64id-2.0.0.tgz"
   "version" "2.0.0"
 
+"bluebird@^3.3.3":
+  "integrity" "sha512-XpNj6GDQzdfW+r2Wnn7xiSAd7TM3jzkxGXBGTtWKuSXv1xUV+azxAm8jdWZN06QTQk+2N2XB9jRDkvbmQmcRtg=="
+  "resolved" "https://registry.npmjs.org/bluebird/-/bluebird-3.7.2.tgz"
+  "version" "3.7.2"
+
 "body-parser@1.20.0":
   "integrity" "sha512-DfJ+q6EPcGKZD1QWUjSpqp+Q7bDQTsQIF4zfUAtZ6qk+H/3/QRhg9CEp39ss+/T2vw0+HaidC0ecJj/DRLIaKg=="
   "resolved" "https://registry.npmjs.org/body-parser/-/body-parser-1.20.0.tgz"
@@ -527,6 +537,11 @@
   dependencies:
     "object-assign" "^4"
     "vary" "^1"
+
+"create-error@^0.3.1":
+  "integrity" "sha1-aYECRaYp5lRDK/BDdzYAA6U1GiM="
+  "resolved" "https://registry.npmjs.org/create-error/-/create-error-0.3.1.tgz"
+  "version" "0.3.1"
 
 "cross-spawn@^6.0.5":
   "integrity" "sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ=="
@@ -1747,6 +1762,14 @@
   "integrity" "sha512-dB15eXv3p2jDlbOiNLyMabYg1/sXvppd8DP2J3EOCQ0AkuSXCW2tP7mnVouVLJKgUMY6yP0kcQDVpLCN13h4Xg=="
   "resolved" "https://registry.npmjs.org/queue-microtask/-/queue-microtask-1.2.2.tgz"
   "version" "1.2.2"
+
+"random-number-csprng@^1.0.2":
+  "integrity" "sha1-/NEg5i3/wsB2dMfD/gHhayX3OiY="
+  "resolved" "https://registry.npmjs.org/random-number-csprng/-/random-number-csprng-1.0.2.tgz"
+  "version" "1.0.2"
+  dependencies:
+    "bluebird" "^3.3.3"
+    "create-error" "^0.3.1"
 
 "range-parser@~1.2.1":
   "integrity" "sha512-Hrgsx+orqoygnmhFbKaHE6c296J+HTAQXoxEF6gNupROmmGJRoyzfG3ccAveqCBrwr/2yxQ5BVd/GTl5agOwSg=="
