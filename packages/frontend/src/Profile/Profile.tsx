@@ -103,11 +103,30 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
 
 	const username = user && user.username;
 
+	const addMessage = () => {
+		const input = document.getElementById('input') as HTMLInputElement;
+		const inputval = input.value;
+		let text = '';
+		if (inputval) {
+			if (username && username.trim()) {
+				text = username + ': ' + inputval;
+			} else {
+				text = 'Anonymous: ' + inputval;
+			}
+			const msg = document.getElementById('messages') as HTMLInputElement;
+			const item = document.createElement('li');
+			item.textContent = text;
+			msg.appendChild(item);
+			window.scrollTo(0, document.body.scrollHeight);
+			input.value = '';
+		}
+	};
+
 	return (
 		<body>
 			<div className="Profile">
 				<div>
-					My username is{' '}
+					My username is{''}
 					{username ? <pre>{username}</pre> : 'not set.'}
 					<br></br>
 					My public address is <pre>{publicAddress}</pre>
@@ -126,7 +145,9 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
 			<ul id="messages"></ul>
 			<form id="form" action="">
 				<input id="input" autoComplete="off" />
-				<button>Send</button>
+				<button type="button" onClick={addMessage}>
+					Send
+				</button>
 			</form>
 			<script src="/socket.io/socket.io.js"></script>
 			<script src="packages\frontend\src\Profile\chat.js"></script>

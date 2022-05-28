@@ -4,6 +4,8 @@ import { INTEGER, Sequelize, STRING } from 'sequelize';
 
 import { User } from './models';
 
+import crypto from "crypto";
+
 const sequelize = new Sequelize('login-with-metamask-database', '', undefined, {
 	dialect: 'sqlite',
 	storage: path.join(os.tmpdir(), 'db.sqlite'),
@@ -16,7 +18,7 @@ User.init(
 		nonce: {
 			allowNull: false,
 			type: INTEGER.UNSIGNED, // SQLITE will use INTEGER
-			defaultValue: (): number => Math.floor(Math.random() * 10000), // Initialize with a random nonce
+			defaultValue: (): number => crypto.randomInt(0, 10000),
 		},
 		publicAddress: {
 			allowNull: false,

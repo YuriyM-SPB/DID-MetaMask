@@ -74,6 +74,7 @@ export const create = (req: Request, res: Response, next: NextFunction) => {
 						'User is not defined in "Generate a new nonce for the user".'
 					);
 				}
+				
 				user.nonce = crypto.randomInt(0, 10000);
 
 				return user.save();
