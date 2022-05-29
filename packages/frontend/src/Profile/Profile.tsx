@@ -103,6 +103,11 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
 
 	const username = user && user.username;
 
+	const clearAll = () => {
+		const msg = document.getElementById('messages') as HTMLInputElement;
+		msg.innerHTML = '';
+	};
+
 	const addMessage = () => {
 		const input = document.getElementById('input') as HTMLInputElement;
 		const inputval = input.value;
@@ -147,6 +152,9 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
 				<input id="input" autoComplete="off" />
 				<button type="button" onClick={addMessage}>
 					Send
+				</button>
+				<button type="button" onClick={clearAll}>
+					Clear all
 				</button>
 			</form>
 			<script src="/socket.io/socket.io.js"></script>
