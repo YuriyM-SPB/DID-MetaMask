@@ -2,16 +2,14 @@ import './Profile.css';
 
 import jwtDecode from 'jwt-decode';
 import React, { useState, useEffect } from 'react';
+//import { stringify } from 'flatted';
 //import Messenger from "./messenger.js";
 /* tslint:disable no-var-requires */
 /*
-import * as express from "express"
-const app = express();
+const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const port = process.env.PORT || 3000;
 */
-
 import { Auth } from '../types';
 
 interface Props {
@@ -110,22 +108,81 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
 
 	const addMessage = () => {
 		const input = document.getElementById('input') as HTMLInputElement;
-		const inputval = input.value;
-		let text = '';
+		let inputval = input.value;
 		if (inputval) {
 			if (username && username.trim()) {
-				text = username + ': ' + inputval;
+				inputval = username + ': ' + inputval;
 			} else {
-				text = 'Anonymous: ' + inputval;
+				inputval = 'Anonymous: ' + inputval;
 			}
 			const msg = document.getElementById('messages') as HTMLInputElement;
 			const item = document.createElement('li');
-			item.textContent = text;
+			item.textContent = inputval;
 			msg.appendChild(item);
-			window.scrollTo(0, document.body.scrollHeight);
+			sendMessage(inputval);
+			//getMessage();
 			input.value = '';
 		}
 	};
+
+	const sendMessage = (message: string) =>
+		fetch(`${process.env.REACT_APP_BACKEND_URL}/messages`, {
+			body: message,
+			headers: {
+				'Content-Type': message,
+			},
+			method: 'POST',
+		});
+	/*
+			.then((res) => res.text())
+			.then((text) => {
+				const msg = document.getElementById(
+					'messages'
+				) as HTMLInputElement;
+				const item = document.createElement('li');
+				item.textContent = text;
+				msg.appendChild(item);
+			});
+			*/
+
+	const getMessages = () =>
+		fetch(`${process.env.REACT_APP_BACKEND_URL}/messages`, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'GET',
+		})
+			.then((res) => res.text())
+			.then((text) => {
+				const msg = document.getElementById(
+					'messages'
+				) as HTMLInputElement;
+				const messages = JSON.parse(text);
+				for (const message of messages) {
+					const item = document.createElement('li');
+					item.textContent = message;
+					msg.appendChild(item);
+				}
+			});
+
+	const refresh = () => {
+		window.location.reload();
+	};
+
+	const deleteMessages = () =>
+		fetch(`${process.env.REACT_APP_BACKEND_URL}/messages`, {
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			method: 'DELETE',
+		});
+
+	const clearMessages = () => {
+		deleteMessages();
+		refresh();
+	};
+
+	window.onload = getMessages;
 
 	return (
 		<body>
@@ -153,7 +210,10 @@ export const Profile = ({ auth, onLoggedOut }: Props): JSX.Element => {
 				<button type="button" onClick={addMessage}>
 					Send
 				</button>
-				<button type="button" onClick={clearAll}>
+				<button type="button" onClick={refresh}>
+					Refresh
+				</button>
+				<button type="button" onClick={clearMessages}>
 					Clear all
 				</button>
 			</form>

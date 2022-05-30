@@ -7,7 +7,8 @@ import { Profile } from '../Profile/Profile';
 import { Auth } from '../types';
 import logo from './MetaMask_Fox.svg';
 
-const LS_KEY = 'login-with-metamask:auth';
+//const LS_KEY = 'login-with-metamask:auth';
+const LS_KEY = 'did:auth';
 
 interface State {
 	auth?: Auth;
